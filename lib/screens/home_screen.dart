@@ -14,12 +14,12 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-        leading: Icon(
+        leading: const Icon(
           Icons.arrow_back_ios,
         ),
         actions: [
           IconButton(
-            icon: Icon(
+            icon: const Icon(
               Icons.shopping_cart,
             ),
             onPressed: () {},
@@ -32,7 +32,7 @@ class HomePage extends StatelessWidget {
             padding: const EdgeInsets.all(16),
             child: Row(
               children: [
-                Expanded(
+                const Expanded(
                   child: Text(
                     'ShopX',
                     style: TextStyle(
@@ -42,8 +42,9 @@ class HomePage extends StatelessWidget {
                   ),
                 ),
                 IconButton(
-                    icon: Icon(Icons.view_list_rounded), onPressed: () {}),
-                IconButton(icon: Icon(Icons.grid_view), onPressed: () {}),
+                    icon: const Icon(Icons.view_list_rounded),
+                    onPressed: () {}),
+                IconButton(icon: const Icon(Icons.grid_view), onPressed: () {}),
               ],
             ),
           ),
@@ -55,13 +56,13 @@ class HomePage extends StatelessWidget {
                   return ProductTile(productController.productList[index]);
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                  crossAxisCount: 5,
+                  crossAxisCount: 2,
                   crossAxisSpacing: 5.0,
                   mainAxisSpacing: 5.0,
                 ),
               );
             }),
-          )
+          ),
         ],
       ),
     );

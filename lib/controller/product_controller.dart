@@ -1,19 +1,20 @@
 import 'package:get/state_manager.dart';
 import 'package:shopping_app/modal/product_modal.dart';
-import 'package:shopping_app/network/netork.dart';
+import 'package:shopping_app/network/network.dart';
 
 class ProductController extends GetxController {
-  final productList = [].obs;
+  final productList = <Product>[].obs;
   var isLoading = true.obs;
 
   @override
   void onInit() {
-    fetchProduct();
-    print(productList);
+    fetchProducts();
+    // print(productList);
+
     super.onInit();
   }
 
-  void fetchProduct() async {
+  void fetchProducts() async {
     try {
       isLoading(true);
       var products = await NetworkService.fetchProducts();

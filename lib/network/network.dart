@@ -1,17 +1,18 @@
 import 'package:http/http.dart' as http;
 import 'package:shopping_app/modal/product_modal.dart';
+import 'dart:convert';
 
 class NetworkService {
   static var client = http.Client();
 
   static Future<List<Product>?> fetchProducts() async {
-    var response = await client.get(Uri.parse(
-        'https://makeup-api.herokuapp.com/api/v1/products.json?brand=maybelline'));
+    var response = await client
+        .get(Uri.parse('https://jsonplaceholder.typicode.com/photos'));
 
     if (response.statusCode == 200) {
-      var jsonString = response.body;
-      print(jsonString);
-      return productFromJson(jsonString);
+      String data = response.body;
+      print(response.statusCode);
+      return productFromJson(data);
     } else {
       return null;
     }
