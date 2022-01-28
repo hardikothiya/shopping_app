@@ -8,13 +8,11 @@ class ProductController extends GetxController {
 
   @override
   void onInit() {
-    fetchProducts();
-    // print(productList);
-
+    fetchProduct();
     super.onInit();
   }
 
-  void fetchProducts() async {
+  void fetchProduct() async {
     try {
       isLoading(true);
       var products = await NetworkService.fetchProducts();
