@@ -37,6 +37,13 @@ class ProductTile extends StatelessWidget {
                       child: Image.network(
                         product.thumbnailUrl,
                         fit: BoxFit.cover,
+                        loadingBuilder: (context, child, loadingProgress) {
+                          if (loadingProgress == null) {
+                            return child;
+                          } else {
+                            return Center(child: CircularProgressIndicator());
+                          }
+                        },
                       ),
                     ),
                     Positioned(
