@@ -4,7 +4,6 @@
 
 import 'dart:convert';
 
-import 'package:flutter/src/widgets/icon.dart';
 import 'package:get/get_rx/src/rx_types/rx_types.dart';
 
 List<Product> productFromJson(String str) =>

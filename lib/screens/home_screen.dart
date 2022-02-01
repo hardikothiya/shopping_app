@@ -1,9 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:shopping_app/controller/cart_controller.dart';
 import 'package:shopping_app/controller/product_controller.dart';
 import 'package:get/state_manager.dart';
+import 'package:shopping_app/screens/cart_screen.dart';
 
 import 'package:shopping_app/screens/product_tile.dart';
 
@@ -26,7 +27,13 @@ class HomePage extends StatelessWidget {
                 icon: const Icon(
                   Icons.shopping_cart,
                 ),
-                onPressed: () {},
+                onPressed: () {
+                  if (cartController.cartList.isEmpty) {
+                    return null;
+                  } else {
+                    Get.to(CartScreen(cartController.cartList[0]));
+                  }
+                },
               ),
               Padding(
                 padding: const EdgeInsets.only(right: 8.0),
@@ -34,7 +41,7 @@ class HomePage extends StatelessWidget {
                   builder: (controller) {
                     return Text(
                       cartController.cartList.length.toString(),
-                      style: TextStyle(fontSize: 18),
+                      style: const TextStyle(fontSize: 18),
                     );
                   },
                 ),
@@ -85,29 +92,6 @@ class HomePage extends StatelessWidget {
             }),
           ),
         ],
-      ),
-      bottomSheet: Container(
-        color: Theme.of(context).primaryColor,
-        height: 70,
-        width: double.infinity,
-        child: Center(
-          child: Padding(
-            padding: const EdgeInsets.only(right: 8.0),
-            child: GetX<CartController>(
-              builder: (controller) {
-                return Text(
-                  'Total Amount :' +
-                      cartController.totalPrice.toString() +
-                      '\$',
-                  style: TextStyle(
-                      fontSize: 20,
-                      color: Colors.white,
-                      fontWeight: FontWeight.bold),
-                );
-              },
-            ),
-          ),
-        ),
       ),
     );
   }

@@ -1,6 +1,8 @@
 import 'package:get/get.dart';
 import 'package:shopping_app/modal/product_modal.dart';
 
+import '../modal/product_modal.dart';
+
 class CartController extends GetxController {
   final cartList = <Product>[].obs;
 
