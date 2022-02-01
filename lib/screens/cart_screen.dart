@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_core/src/get_main.dart';
 import 'package:get/get_instance/src/extension_instance.dart';
+import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shopping_app/controller/cart_controller.dart';
 import 'package:shopping_app/modal/product_modal.dart';
@@ -14,13 +15,18 @@ class CartScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        leading: IconButton(
+          icon: const Icon(Icons.arrow_back),
+          onPressed: () {
+            Get.back();
+          },
+        ),
+      ),
       body: Column(
         children: [
           Expanded(
             child: Obx(() {
-              // if (cartController.isLoading.value) {
-              //   return const Center(child: CircularProgressIndicator());
-              // } else {
               return GridView.builder(
                 itemCount: cartController.cartList.length,
                 itemBuilder: (context, index) {
@@ -32,7 +38,6 @@ class CartScreen extends StatelessWidget {
                   mainAxisSpacing: 5.0,
                 ),
               );
-              // }
             }),
           ),
         ],

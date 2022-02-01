@@ -5,12 +5,19 @@ import 'package:shopping_app/controller/cart_controller.dart';
 import 'package:shopping_app/controller/product_controller.dart';
 import 'package:get/state_manager.dart';
 import 'package:shopping_app/screens/cart_screen.dart';
-
 import 'package:shopping_app/screens/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
   final CartController cartController = Get.put(CartController());
+  final snackBar = const SnackBar(
+      content: Text(
+        'Cart is empty !',
+        textAlign: TextAlign.center,
+        style: TextStyle(fontSize: 16.0),
+      ),
+      duration: Duration(seconds: 1),
+      backgroundColor: Colors.black87);
 
   @override
   Widget build(BuildContext context) {
@@ -18,7 +25,7 @@ class HomePage extends StatelessWidget {
       appBar: AppBar(
         elevation: 0,
         leading: const Icon(
-          Icons.arrow_back_ios,
+          Icons.account_balance_wallet_sharp,
         ),
         actions: [
           Row(
@@ -29,7 +36,7 @@ class HomePage extends StatelessWidget {
                 ),
                 onPressed: () {
                   if (cartController.cartList.isEmpty) {
-                    return null;
+                    ScaffoldMessenger.of(context).showSnackBar(snackBar);
                   } else {
                     Get.to(CartScreen(cartController.cartList[0]));
                   }
