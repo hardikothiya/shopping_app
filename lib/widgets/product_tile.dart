@@ -34,22 +34,10 @@ class ProductTile extends StatelessWidget {
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(4),
                       ),
-                      child: Image.network(
-                        product.thumbnailUrl,
-                        fit: BoxFit.cover,
-                        frameBuilder:
-                            (context, child, frame, wasSynchronouslyLoaded) {
-                          return child;
-                        },
-                        loadingBuilder: (context, child, loadingProgress) {
-                          if (loadingProgress == null) {
-                            return child;
-                          } else {
-                            return const Center(
-                                child: CircularProgressIndicator());
-                          }
-                        },
-                      ),
+                      child: FadeInImage.assetNetwork(
+                          fit: BoxFit.cover,
+                          placeholder: 'assets/placeholder.jpg',
+                          image: product.thumbnailUrl),
                     ),
                     Positioned(
                       right: 0,

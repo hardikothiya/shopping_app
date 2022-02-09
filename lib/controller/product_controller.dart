@@ -5,6 +5,7 @@ import 'package:shopping_app/network/network.dart';
 class ProductController extends GetxController {
   final productList = <Product>[].obs;
   var isLoading = true.obs;
+  final favProductList = <Product>[].obs;
 
   @override
   void onInit() {

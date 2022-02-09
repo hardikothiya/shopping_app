@@ -11,4 +11,8 @@ class CartController extends GetxController {
   addToCart(Product product) {
     cartList.add(product);
   }
+
+  deletFromCart(Product product) {
+    cartList.remove(product);
+  }
 }

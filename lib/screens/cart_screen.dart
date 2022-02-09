@@ -5,7 +5,8 @@ import 'package:get/get_navigation/src/extension_navigation.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:shopping_app/controller/cart_controller.dart';
 import 'package:shopping_app/modal/product_modal.dart';
-import 'package:shopping_app/screens/product_tile.dart';
+import 'package:shopping_app/widgets/cart_product.dart';
+import 'package:shopping_app/widgets/product_tile.dart';
 
 class CartScreen extends StatelessWidget {
   final CartController cartController = Get.put(CartController());
@@ -30,7 +31,7 @@ class CartScreen extends StatelessWidget {
               return GridView.builder(
                 itemCount: cartController.cartList.length,
                 itemBuilder: (context, index) {
-                  return ProductTile(cartController.cartList[index]);
+                  return CartProductTile(cartController.cartList[index]);
                 },
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   crossAxisCount: 2,

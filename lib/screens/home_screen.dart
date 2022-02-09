@@ -5,11 +5,12 @@ import 'package:shopping_app/controller/cart_controller.dart';
 import 'package:shopping_app/controller/product_controller.dart';
 import 'package:get/state_manager.dart';
 import 'package:shopping_app/screens/cart_screen.dart';
-import 'package:shopping_app/screens/product_tile.dart';
+import 'package:shopping_app/widgets/product_tile.dart';
 
 class HomePage extends StatelessWidget {
   final ProductController productController = Get.put(ProductController());
   final CartController cartController = Get.put(CartController());
+  final ScrollController scrollController = ScrollController();
   final snackBar = const SnackBar(
       content: Text(
         'Cart is empty !',
@@ -85,6 +86,7 @@ class HomePage extends StatelessWidget {
                 return const Center(child: CircularProgressIndicator());
               } else {
                 return GridView.builder(
+                  controller: scrollController,
                   itemCount: productController.productList.length,
                   itemBuilder: (context, index) {
                     return ProductTile(productController.productList[index]);
@@ -99,6 +101,14 @@ class HomePage extends StatelessWidget {
             }),
           ),
         ],
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: () {
+          scrollController.animateTo(0,
+              duration: Duration(seconds: 2), curve: Curves.easeInOut);
+          print('pressssss');
+        },
+        child: const Icon(Icons.arrow_upward),
       ),
     );
   }
